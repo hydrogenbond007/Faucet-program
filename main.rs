@@ -23,7 +23,7 @@ fn process_instruction(
         return Err(ProgramError::InvalidInstructionData);
     }
 
-    // Parse the instruction data to get the action (0 for SOL distribution)
+    //Parse 
     let action = instruction_data[0];
 
     match action {
@@ -41,8 +41,8 @@ fn process_instruction(
             //    return Err(ProgramError::AccountAlreadyInitialized);
             //}
 
-            // Calculate the amount of SOL to distribute (you can adjust this as needed)
-            let sol_amount = 100_000_000; // 100,000,000 SOL (0.1 SOL)
+            // Calculate the amount of sol to distribute
+            let sol_amount = 100_000_000; 
 
             // Transfer SOL from the faucet account to the recipient
             let transfer_instruction = system_instruction::transfer(
@@ -51,7 +51,7 @@ fn process_instruction(
                 sol_amount,
             );
 
-            // Send the transfer instruction
+           // cpi to transfer
             solana_program::program::invoke_signed(
                 &transfer_instruction,
                 &[faucet_account_info.clone(), recipient_account_info.clone(), system_program_info.clone()],
